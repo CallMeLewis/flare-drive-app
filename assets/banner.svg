@@ -39,5 +39,5 @@
   <!-- Subtle right-side pill -->
   <rect x="706" y="89" width="122" height="40" rx="20" fill="#242038" stroke="#A594FF" stroke-opacity="0.4" stroke-width="1.5"/>
   <circle cx="728" cy="109" r="4.5" fill="#4ADE80"/>
-  <text x="742" y="114" fill="#ECEEF3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500">v2.2.4</text>
+  <text x="742" y="114" fill="#ECEEF3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500">v2.2.5</text>
 </svg>

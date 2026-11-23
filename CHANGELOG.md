@@ -2,6 +2,11 @@
 
 Public release notes for Flare Drive, newest first.
 
+## 2.2.5 — 2026-11-23
+
+- New opt-in **Share compatibility results** switch under **Settings › About** (off by default): sends anonymous pass or fail results for each firmware, iDrive version, and plugin version once online to help verify compatibility across EntryNav2 units.
+- Removed the release list URL from **Settings › About › App info**.
+
 ## 2.2.4 — 2026-11-23
 
 - Faster head-unit reads on connecting: status appears straight away while companion plugins are checked in parallel.
