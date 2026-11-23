@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/CallMeLewis/flare-drive-app/releases/latest"><strong>Download Latest APK (v2.2.5)</strong></a>
+  <a href="https://github.com/CallMeLewis/flare-drive-app/releases/latest"><strong>Download Latest APK (v2.2.7)</strong></a>
   &nbsp;&middot;&nbsp;
   <a href="#requirements">Requirements</a>
   &nbsp;&middot;&nbsp;
@@ -26,9 +26,9 @@ Get the signed Android APK from [**Releases**](https://github.com/CallMeLewis/fl
 
 | | |
 |---|---|
-| **Latest version** | `2.2.5` (Android 8.0 / API 26 or newer) |
-| **File** | `flare-drive-2.2.5.apk` (3.53 MB) |
-| **APK SHA-256** | `69d1b4b3c13b92cd8354b0d988d3d1a7f3b31da3a923d1b3bff9a425371cf2e2` |
+| **Latest version** | `2.2.7` (Android 8.0 / API 26 or newer) |
+| **File** | `flare-drive-2.2.7.apk` (3.55 MB) |
+| **APK SHA-256** | `03c2ad3bf6189b897f275703b7330fc4843f6bf5a560bc9f35b515d3842ad5ea` |
 | **Signing cert SHA-256** | `55772e3608c3cc9a41dd0617a8d26323bd3e34f09df41bb3a25124989bc72bf5` |
 
 > [!NOTE]
@@ -54,7 +54,7 @@ Get the signed Android APK from [**Releases**](https://github.com/CallMeLewis/fl
 
 ## Getting started
 
-1. **Install the APK** — Download `flare-drive-2.2.5.apk` from [**Releases**](https://github.com/CallMeLewis/flare-drive-app/releases/latest) on your phone, open it, and allow installing unknown apps if Android prompts.
+1. **Install the APK** — Download `flare-drive-2.2.7.apk` from [**Releases**](https://github.com/CallMeLewis/flare-drive-app/releases/latest) on your phone, open it, and allow installing unknown apps if Android prompts.
 2. **Download plugin releases while online** — Open **Plugins** before heading to the car and fetch the latest releases while you have internet access.
 3. **Connect in a parked car** — Plug in the ENET cable with ignition on and Ethernet tethering enabled. Tap the connection chip at the top of the screen and enter your head unit's root password (enable **Save password on this phone** if you want it stored encrypted locally).
 
@@ -63,19 +63,19 @@ Get the signed Android APK from [**Releases**](https://github.com/CallMeLewis/fl
 
 ## Verifying the APK
 
-Every release includes a matching `.sha256` file. To verify `flare-drive-2.2.5.apk` before installing:
+Every release includes a matching `.sha256` file. To verify `flare-drive-2.2.7.apk` before installing:
 
 **Linux / macOS:**
 ```sh
-sha256sum -c flare-drive-2.2.5.apk.sha256
+sha256sum -c flare-drive-2.2.7.apk.sha256
 ```
 
 **Windows (PowerShell):**
 ```powershell
-(Get-FileHash -Algorithm SHA256 .\flare-drive-2.2.5.apk).Hash.ToLower()
+(Get-FileHash -Algorithm SHA256 .\flare-drive-2.2.7.apk).Hash.ToLower()
 ```
 
-Confirm the hash matches `69d1b4b3c13b92cd8354b0d988d3d1a7f3b31da3a923d1b3bff9a425371cf2e2`. Future updates are signed with the same release key (`55772e3608c3cc9a41dd0617a8d26323bd3e34f09df41bb3a25124989bc72bf5`), so Android verifies upgrades automatically.
+Confirm the hash matches `03c2ad3bf6189b897f275703b7330fc4843f6bf5a560bc9f35b515d3842ad5ea`. Future updates are signed with the same release key (`55772e3608c3cc9a41dd0617a8d26323bd3e34f09df41bb3a25124989bc72bf5`), so Android verifies upgrades automatically.
 
 ## Common questions
 

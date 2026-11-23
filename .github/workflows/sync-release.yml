@@ -1,0 +1,78 @@
+name: Sync release version in banner and README
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Update banner.svg and README.md from release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          python3 - <<'PY'
+          import json, os, re, subprocess
+          from pathlib import Path
+
+          tag = os.environ["TAG"]
+          version = tag.lstrip("v")
+          if not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", version):
+              print(f"Skipping non-release tag {tag}")
+              raise SystemExit(0)
+
+          info = json.loads(subprocess.check_output(["gh", "release", "view", tag, "--json", "assets"]))
+          assets = {a["name"]: a for a in info["assets"]}
+          apk_name = f"flare-drive-{version}.apk"
+          sha_name = f"{apk_name}.sha256"
+          if apk_name not in assets:
+              print(f"{apk_name} not in release assets; skipping")
+              raise SystemExit(0)
+
+          size_mb = f"{assets[apk_name]['size'] / 1_000_000:.2f} MB"
+          sha256 = None
+          if sha_name in assets:
+              subprocess.check_call(["gh", "release", "download", tag, "-p", sha_name, "--clobber"])
+              m = re.search(r"\b([0-9a-f]{64})\b", Path(sha_name).read_text().lower())
+              if m:
+                  sha256 = m.group(1)
+              Path(sha_name).unlink(missing_ok=True)
+
+          banner = Path("assets/banner.svg")
+          banner_text = re.sub(r">v[0-9]+\.[0-9]+\.[0-9]+</text>", f">v{version}</text>", banner.read_text(encoding="utf-8"))
+          banner.write_text(banner_text, encoding="utf-8")
+
+          readme = Path("README.md")
+          text = readme.read_text(encoding="utf-8")
+          text = re.sub(r"Download Latest APK \(v[0-9]+\.[0-9]+\.[0-9]+\)", f"Download Latest APK (v{version})", text)
+          text = re.sub(r"(\| \*\*Latest version\*\* \| `)[0-9]+\.[0-9]+\.[0-9]+(`)", rf"\g<1>{version}\g<2>", text)
+          text = re.sub(r"(\| \*\*File\*\* \| `)flare-drive-[0-9]+\.[0-9]+\.[0-9]+\.apk(` \()[0-9.]+ MB(\) \|)", rf"\g<1>{apk_name}\g<2>{size_mb}\g<3>", text)
+          text = re.sub(r"flare-drive-[0-9]+\.[0-9]+\.[0-9]+\.apk", apk_name, text)
+          if sha256:
+              text = re.sub(r"(\| \*\*APK SHA-256\*\* \| `)[0-9a-f]{64}(`)", rf"\g<1>{sha256}\g<2>", text)
+              text = re.sub(r"(Confirm the hash matches `)[0-9a-f]{64}(`)", rf"\g<1>{sha256}\g<2>", text)
+          readme.write_text(text, encoding="utf-8")
+          PY
+
+      - name: Commit updated banner and README
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          if git diff --quiet assets/banner.svg README.md; then
+            echo "Banner and README are already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/banner.svg README.md
+          git commit -m "Update banner and README for $TAG"
+          git push origin main

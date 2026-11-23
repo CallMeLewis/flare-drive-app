@@ -2,6 +2,15 @@
 
 Public release notes for Flare Drive, newest first.
 
+## 2.2.7 — 2026-11-23
+
+- New in-app updates in **Settings › About › App info**: Flare Drive checks the signed catalog for newer versions, shows an update row on **Status** and a dot on **Settings** when one is available, verifies the download, and opens Android's installer.
+
+## 2.2.6 — 2026-11-23
+
+- Turning on **Sound through Android Auto** in **Plugins › Android Auto › Settings** now prompts to restart the head unit so song info in the cluster and on the Media tile starts straight away.
+- **Use the car's GPS** in **Plugins › Android Auto › Settings** now notes that the phone's Location setting must stay on for navigation apps.
+
 ## 2.2.5 — 2026-11-23
 
 - New opt-in **Share compatibility results** switch under **Settings › About** (off by default): sends anonymous pass or fail results for each firmware, iDrive version, and plugin version once online to help verify compatibility across EntryNav2 units.
