@@ -1,0 +1,8 @@
+# APKs are attached to GitHub Releases rather than committed to git history
+*.apk
+*.aab
+*.jks
+*.keystore
+*.zip
+installer-report*.txt
+.DS_Store

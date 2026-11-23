@@ -1,0 +1,51 @@
+name: Bug report
+description: Report a problem with Flare Drive
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting an issue.
+        **Privacy reminder:** Never paste your head unit's SSH password, vehicle VIN, or unredacted diagnostic logs into a public issue.
+  - type: input
+    id: app_version
+    attributes:
+      label: Flare Drive version
+      placeholder: "2.2.4"
+    validations:
+      required: true
+  - type: input
+    id: android_version
+    attributes:
+      label: Phone model and Android version
+      placeholder: "e.g. Pixel 8, Android 16"
+    validations:
+      required: true
+  - type: dropdown
+    id: connection
+    attributes:
+      label: Connection method
+      options:
+        - ENET cable + USB Ethernet adapter
+        - Car Wi-Fi (QR code)
+        - Offline / not connected to car
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe what you expected to happen and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open Flare Drive
+        2. Connect to the head unit
+        3. ...
+    validations:
+      required: false
