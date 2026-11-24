@@ -2,6 +2,11 @@
 
 Public release notes for Flare Drive, newest first.
 
+## 2.2.8 — 2026-11-24
+
+- **BoostDeck**, **ShiftDeck**, **Bootmod3 Suite**, **MHD+ Suite** and **Engine Fault Codes** in **Plugins** now install on any head unit firmware, at your own risk.
+- **App updates** now has its own row in **Settings**, and **Share compatibility results** moved to **Settings › Security & privacy**.
+
 ## 2.2.7 — 2026-11-23
 
 - New in-app updates in **Settings › About › App info**: Flare Drive checks the signed catalog for newer versions, shows an update row on **Status** and a dot on **Settings** when one is available, verifies the download, and opens Android's installer.
