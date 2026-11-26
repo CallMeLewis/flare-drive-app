@@ -71,8 +71,9 @@ jobs:
             echo "Banner and README are already up to date."
             exit 0
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Committed as the repo's owner (GitHub noreply address), so no bot shows up among the contributors.
+          git config user.name "CallMeLewis"
+          git config user.email "85462580+CallMeLewis@users.noreply.github.com"
           git add assets/banner.svg README.md
           git commit -m "Update banner and README for $TAG"
           git push origin main
